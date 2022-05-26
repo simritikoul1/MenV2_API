@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "e932add1-56c4-4bcd-84ae-d606d677c5d1",
 		"name": "My_Mentorship_V2",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12468790"
 	},
 	"item": [
 		{
@@ -16,7 +17,51 @@
 							"script": {
 								"exec": [
 									"let jsonData=pm.response.json();\r",
-									"pm.environment.set(\"id_token_1\", jsonData.id_token);"
+									"pm.environment.set(\"id_token_1\", jsonData.id_token);\r",
+									"\r",
+									"pm.test(\"Response has a id token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a access token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check that we have all declared fields\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"scope\");\r",
+									"    pm.expect(jsonData).to.have.property(\"expires_in\");\r",
+									"    pm.expect(jsonData).to.have.property(\"token_type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't NULL\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal(null);\r",
+									"    pm.expect(jsonData.id_token).not.equal(null);\r",
+									"    pm.expect(jsonData.scope).not.equal(null);\r",
+									"    pm.expect(jsonData.expires_in).not.equal(null);\r",
+									"    pm.expect(jsonData.token_type).not.equal(null);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't empty\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal('');\r",
+									"    pm.expect(jsonData.id_token).not.equal('');\r",
+									"    pm.expect(jsonData.scope).not.equal('');\r",
+									"    pm.expect(jsonData.expires_in).not.equal('');\r",
+									"    pm.expect(jsonData.token_type).not.equal('');\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token Type is Bearer in Response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.token_type).to.eq('Bearer');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -58,7 +103,51 @@
 							"script": {
 								"exec": [
 									"let jsonData=pm.response.json();\r",
-									"pm.environment.set(\"id_token_2\", jsonData.id_token);"
+									"pm.environment.set(\"id_token_2\", jsonData.id_token);\r",
+									"\r",
+									"pm.test(\"Response has a id token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a access token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check that we have all declared fields\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"scope\");\r",
+									"    pm.expect(jsonData).to.have.property(\"expires_in\");\r",
+									"    pm.expect(jsonData).to.have.property(\"token_type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't NULL\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal(null);\r",
+									"    pm.expect(jsonData.id_token).not.equal(null);\r",
+									"    pm.expect(jsonData.scope).not.equal(null);\r",
+									"    pm.expect(jsonData.expires_in).not.equal(null);\r",
+									"    pm.expect(jsonData.token_type).not.equal(null);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't empty\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal('');\r",
+									"    pm.expect(jsonData.id_token).not.equal('');\r",
+									"    pm.expect(jsonData.scope).not.equal('');\r",
+									"    pm.expect(jsonData.expires_in).not.equal('');\r",
+									"    pm.expect(jsonData.token_type).not.equal('');\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token Type is Bearer in Response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.token_type).to.eq('Bearer');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -100,7 +189,51 @@
 							"script": {
 								"exec": [
 									"let jsonData=pm.response.json();\r",
-									"pm.environment.set(\"id_token_3\", jsonData.id_token);"
+									"pm.environment.set(\"id_token_3\", jsonData.id_token);\r",
+									"\r",
+									"pm.test(\"Response has a id token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a access token property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check that we have all declared fields\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id_token\");\r",
+									"    pm.expect(jsonData).to.have.property(\"scope\");\r",
+									"    pm.expect(jsonData).to.have.property(\"expires_in\");\r",
+									"    pm.expect(jsonData).to.have.property(\"token_type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't NULL\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal(null);\r",
+									"    pm.expect(jsonData.id_token).not.equal(null);\r",
+									"    pm.expect(jsonData.scope).not.equal(null);\r",
+									"    pm.expect(jsonData.expires_in).not.equal(null);\r",
+									"    pm.expect(jsonData.token_type).not.equal(null);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if value isn't empty\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.access_token).not.equal('');\r",
+									"    pm.expect(jsonData.id_token).not.equal('');\r",
+									"    pm.expect(jsonData.scope).not.equal('');\r",
+									"    pm.expect(jsonData.expires_in).not.equal('');\r",
+									"    pm.expect(jsonData.token_type).not.equal('');\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token Type is Bearer in Response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.token_type).to.eq('Bearer');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -192,7 +325,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Automation005\",\r\n    \"budget\": 10000,\r\n    \"crowdFundingID\": \"049febeb-075e-4cbc-8d98-c5ef62483388\",\r\n    \"paymentFrequency\": \"Milestone Based\",\r\n    \"createdBy\": \"simk.ment.admin\",\r\n    \"status\":\"pending\",\r\n    \"estimatedBudget\": 9900,\r\n    \"cocURL\":\"www.google.com\",\r\n    \"logoURL\": \"www.github.com\",\r\n    \"description\": \"API test through github integration to CircleCI\",\r\n    \"courses\": [\r\n        \"5G Strategy for Business Leaders\"\r\n    ],\r\n    \"preRequisites\": [\r\n        {\r\n            \"description\": \"Resume Submission\",\r\n            \"name\": \"Resume\",\r\n            \"dueDate\": 1653748696000,\r\n            \"URL\": \"\",\r\n            \"submissionType\": \"pdf\",\r\n            \"isCustom\": false,\r\n            \"isRequired\": true\r\n        }\r\n    ],\r\n    \"projects\": [\r\n        {\r\n            \"projectID\": \"a0941000005osNmAAI\",\r\n            \"repositories\": [\r\n                \"{{Repo}}\"\r\n            ]\r\n        }\r\n    ],\r\n    \"programTerms\": [\r\n        {\r\n            \"name\": \"Tada\",\r\n            \"startDate\": 1653921496000,\r\n            \"endDate\": 1656599896000,\r\n            \"applicationAcceptanceStartDate\": 1651156696000,\r\n            \"applicationAcceptanceEndDate\": 1653748696000,\r\n            \"availableMenteeSpots\": 3,\r\n            \"isActive\": true,\r\n            \"isFullTime\": true,\r\n            \"statusID\": 1\r\n        }\r\n    ],\r\n    \"skills\": [\r\n        \"Android\",\r\n        \"Java\",\r\n        \"Kotlin\"\r\n    ],\r\n    \"coAdmins\": [\r\n        {\r\n            \"userLFID\": \"simk67\"\r\n        }\r\n    ],\r\n    \"mentors\":[\r\n        {\r\n            \"id\": 145,\r\n            \"firstName\": \"sim\",\r\n            \"lastName\": \"k68\",\r\n            \"email\": \"simritik+068@proximabiz.com\",\r\n            \"acceptanceStatus\": \"pending\"\r\n        }\r\n    ],\r\n    \"learningObjectives\": [\r\n        {\r\n            \"title\": \"abcd\",\r\n            \"description\": \"alphabets\"\r\n        },\r\n        {\r\n            \"title\": \"1234\",\r\n            \"description\": \"numbers\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Automation014\",\r\n    \"budget\": 10000,\r\n    \"crowdFundingID\": \"049febeb-075e-4cbc-8d98-c5ef62483388\",\r\n    \"paymentFrequency\": \"Milestone Based\",\r\n    \"createdBy\": \"simk.ment.admin\",\r\n    \"status\":\"pending\",\r\n    \"estimatedBudget\": 9900,\r\n    \"cocURL\":\"www.google.com\",\r\n    \"logoURL\": \"www.github.com\",\r\n    \"description\": \"API test through github integration to CircleCI\",\r\n    \"courses\": [\r\n        \"5G Strategy for Business Leaders\"\r\n    ],\r\n    \"preRequisites\": [\r\n        {\r\n            \"description\": \"Resume Submission\",\r\n            \"name\": \"Resume\",\r\n            \"dueDate\": 1656699545000,\r\n            \"URL\": \"\",\r\n            \"submissionType\": \"pdf\",\r\n            \"isCustom\": false,\r\n            \"isRequired\": true\r\n        }\r\n    ],\r\n    \"projects\": [\r\n        {\r\n            \"projectID\": \"a0941000005osNmAAI\",\r\n            \"repositories\": [\r\n                \"{{Repo}}\"\r\n            ]\r\n        }\r\n    ],\r\n    \"programTerms\": [\r\n        {\r\n            \"name\": \"Tada\",\r\n            \"startDate\": 1656699545000,\r\n            \"endDate\": 1662056345000,\r\n            \"applicationAcceptanceStartDate\": 1653589145000,\r\n            \"applicationAcceptanceEndDate\": 1656699545000,\r\n            \"availableMenteeSpots\": 3,\r\n            \"isActive\": true,\r\n            \"isFullTime\": true,\r\n            \"statusID\": 1\r\n        }\r\n    ],\r\n    \"skills\": [\r\n        \"Android\",\r\n        \"Java\",\r\n        \"Kotlin\"\r\n    ],\r\n    \"coAdmins\": [\r\n        {\r\n            \"userLFID\": \"simk67\"\r\n        }\r\n    ],\r\n    \"mentors\":[\r\n        {\r\n            \"id\": 145,\r\n            \"firstName\": \"sim\",\r\n            \"lastName\": \"k68\",\r\n            \"email\": \"simritik+068@proximabiz.com\",\r\n            \"acceptanceStatus\": \"pending\"\r\n        }\r\n    ],\r\n    \"learningObjectives\": [\r\n        {\r\n            \"title\": \"abcd\",\r\n            \"description\": \"alphabets\"\r\n        },\r\n        {\r\n            \"title\": \"1234\",\r\n            \"description\": \"numbers\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -227,6 +360,48 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Body Includes id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID Not Empty\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.not.eq(\"\");\r",
+									"});\r",
+									"/*\r",
+									"\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Organizations is Array Type\", function () {\r",
+									"    pm.expect(jsonData).is.to.include(\"organizations\");\r",
+									"    pm.expect(jsonData.organizations).to.be.a(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Body Includes Slug\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Slug\");\r",
+									"});\r",
+									"pm.test(\"Has 1 more more Repositories\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.repositories.length).to.be.gt(0);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body Includes First Name\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\").with.property(\"currentUser\").with.property(\"firstName\");\r",
+									"}); \r",
+									"\r",
+									"pm.test(\"Body Includes Last Name\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\").with.property(\"currentUser\").with.property(\"lastName\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body Includes Roles\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\").with.property(\"currentUser\").with.property(\"roles\");\r",
+									"});*/\r",
+									"\r",
 									"const schema = {\r",
 									"  \r",
 									"  \"type\": \"object\",\r",
@@ -58730,7 +58905,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const schema = {\r",
+									"/*const schema = {\r",
 									"  \r",
 									"  \"type\": \"object\",\r",
 									"  \"properties\": {\r",
@@ -60371,7 +60546,7 @@
 									"pm.test(\"Validate schema\", ()=>\r",
 									"{\r",
 									"    pm.response.to.have.jsonSchema(schema);\r",
-									"})"
+									"})*/"
 								],
 								"type": "text/javascript"
 							}
@@ -85462,7 +85637,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"programID\":{{program_id}}\r\n} ",
+							"raw": "{\r\n    \"programID\":\"{{program_id}}\"\r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -86983,7 +87158,9 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.test(\"Check the active environment\", () => {",
+					"  pm.expect(pm.environment.name).to.eql(\"Mentorship_V2-dev\");",
+					"});"
 				]
 			}
 		}
