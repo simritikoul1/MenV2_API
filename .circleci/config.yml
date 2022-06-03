@@ -36,17 +36,14 @@ jobs:
           environment: ./Menv2env.json
 
 workflows:
-  postman-workflow:
+  setup:
     triggers:
       - schedule:
-          cron: "27 18 * * *"
+          cron: "35 18 * * *"
           filters:
             branches:
               only:
                 - main
     jobs:
-      - test_postman
-
-  setup:
-    jobs:
       - setup_job
+      - test_postman
