@@ -7,15 +7,6 @@ orbs:
   newman: postman/newman@1.0.0
 
 executors:
-  setup_job:
-    executor: continuation/default
-    steps:
-      - run:
-          name: Generate config
-          command: |
-            ./generate_config > generated_config.yml
-      - continuation/continue:
-          configuration_path: generated_config.yml
   postman_newman:
     description: Official newman docker image - https://hub.docker.com/r/postman/newman
     docker:
@@ -27,6 +18,15 @@ executors:
         type: string
 
 jobs:
+  setup_job:
+    executor: continuation/default
+    steps:
+      - run:
+          name: Generate config
+          command: |
+            ./generate_config > generated_config.yml
+      - continuation/continue:
+          configuration_path: generated_config.yml
   test_postman:
     executor: postman_newman
     steps:
@@ -50,3 +50,12 @@ workflows:
   setup:
     jobs:
       - setup_job
+
+
+
+
+
+
+
+
+
