@@ -8,11 +8,11 @@ workflows:
   test_postman:
     triggers:
       - schedule:
-        cron: "15 15 * * *"
-        filters:
-          branches:
-            only:
-              - main
+          cron: "20 15 * * *"
+          filters:
+            branches:
+              only:
+                - main
 
 orbs:
   newman: postman/newman@1.0.0
