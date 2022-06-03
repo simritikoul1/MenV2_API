@@ -16,8 +16,6 @@ workflows:
             branches:
               only:
                 - main
-  jobs:
-    - test_postman
 
 jobs:
   test_postman:
