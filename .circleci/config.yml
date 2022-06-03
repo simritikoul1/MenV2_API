@@ -10,7 +10,6 @@ scheduled-workflow:
         branches:
           only: main
 jobs:
-  test
   build:
     executor: newman/postman-newman-docker
     steps:
