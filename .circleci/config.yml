@@ -5,14 +5,14 @@ workflows:
   commit:
     jobs:
       - test_postman
-    test_postman:
-      triggers:
-        - schedule:
-          cron: "10 15 * * *"
-          filters:
-            branches:
-              only:
-                - main
+  test_postman:
+    triggers:
+      - schedule:
+        cron: "15 15 * * *"
+        filters:
+          branches:
+            only:
+              - main
 
 orbs:
   newman: postman/newman@1.0.0
