@@ -34,13 +34,15 @@ jobs:
           environment: ./Menv2env.json
 
 workflows:
-  commit:
+  postman-on-push:
     jobs:
       - setup_job
-  postman_test_workflow:
+      - test_postman
+
+  postman-on-schedule:
     triggers:
       - schedule:
-          cron: "0 0,3,6,,9,12,,15,18,21 * * *"
+          cron: "0 0,3,6,9,12,15,18,21 * * *"
           filters:
             branches:
               only:
