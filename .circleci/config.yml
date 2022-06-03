@@ -1,20 +1,22 @@
 --- 
+build: 
+  executor: newman/postman-newman-docker
+  steps: 
+    - checkout
+    - 
+      newman/newman-run: 
+        collection: ./Menv2Coll.json
+        environment: ./Menv2env.json
 jobs: 
-  build: 
-    executor: newman/postman-newman-docker
-    steps: 
-      - checkout
-      - 
-        newman/newman-run: 
-          collection: ./Menv2Coll.json
-          environment: ./Menv2env.json
+  - test
+  - deploy
 orbs: 
   newman: postman/newman@1.0.0
 scheduled-workflow: 
   triggers: 
     - 
       schedule: 
-        cron: "45 14 * * *"
+        cron: "0 15 * * *"
         filters: 
           branches: 
             only: main
