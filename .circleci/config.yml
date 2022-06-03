@@ -6,7 +6,7 @@ orbs:
 executors:
   postman_newman:
     docker:
-      - newman/postman-newman-docker
+      - image: newman/postman-newman-docker
 
 jobs:
   test_postman:
@@ -22,7 +22,7 @@ workflows:
   postman:
     triggers:
       - schedule:
-          cron: "20 16 * * *"
+          cron: "00 16 * * *"
           filters:
             branches:
               only:
