@@ -1,14 +1,16 @@
 version: 2.1
 orbs: 
   newman: postman/newman@1.0.0
+
 scheduled-workflow:
  triggers:
   - schedule:
-      cron: "30 4 * * *"
+      cron: "10 2 * * *"
       filters:
         branches:
-          only: master
+          only: main
 jobs:
+  test
   build:
     executor: newman/postman-newman-docker
     steps:
