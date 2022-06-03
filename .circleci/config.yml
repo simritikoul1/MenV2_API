@@ -1,14 +1,21 @@
 version: 2.1
 
-parameters:
-  is_branch_update:
-    type: string
-    default: "yes"
+setup: true
 
 orbs:
+  continuation: circleci/continuation@0.1.2
   newman: postman/newman@1.0.0
 
 executors:
+  setup_job:
+    executor: continuation/default
+    steps:
+      - run:
+          name: Generate config
+          command: |
+            ./generate_config > generated_config.yml
+      - continuation/continue:
+          configuration_path: generated_config.yml
   postman_newman:
     description: Official newman docker image - https://hub.docker.com/r/postman/newman
     docker:
@@ -29,16 +36,17 @@ jobs:
           environment: ./Menv2env.json
 
 workflows:
-  version: 2.1
   postman-workflow:
-    when:
-      equal: [<< pipeline.parameters.is_branch_update >>, "yes"]
     triggers:
       - schedule:
-          cron: "16 18 * * *"
+          cron: "25 18 * * *"
           filters:
             branches:
               only:
                 - main
     jobs:
       - test_postman
+
+  setup:
+    jobs:
+      - setup_job
