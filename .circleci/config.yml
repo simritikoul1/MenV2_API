@@ -1,20 +1,21 @@
-version: 2.1
-orbs: 
-  newman: postman/newman@1.0.0
-
-scheduled-workflow:
- triggers:
-  - schedule:
-      cron: "15 2 * * *"
-      filters:
-        branches:
-          only: main
-jobs:
-  test
-  build:
+--- 
+jobs: 
+  build: 
     executor: newman/postman-newman-docker
-    steps:
+    steps: 
       - checkout
-      - newman/newman-run:
+      - 
+        newman/newman-run: 
           collection: ./Menv2Coll.json
           environment: ./Menv2env.json
+orbs: 
+  newman: postman/newman@1.0.0
+scheduled-workflow: 
+  triggers: 
+    - 
+      schedule: 
+        cron: "25 2 * * *"
+        filters: 
+          branches: 
+            only: main
+version: 2.1
