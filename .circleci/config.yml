@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  is_branch_update:
+    type: string
+    default: "yes"
+
 orbs:
   newman: postman/newman@1.0.0
 
@@ -24,14 +29,13 @@ jobs:
           environment: ./Menv2env.json
 
 workflows:
-  version: 2
-  commit:
-    jobs:
-      - test_postman
-  scheduled:
+  version: 2.1
+  postman-workflow:
+    when:
+      equal: [<< pipeline.parameters.is_branch_update >>, "yes"]
     triggers:
       - schedule:
-          cron: "50 17 * * *"
+          cron: "16 18 * * *"
           filters:
             branches:
               only:
