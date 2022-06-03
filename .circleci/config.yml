@@ -22,7 +22,7 @@ workflows:
   postman:
     triggers:
       - schedule:
-          cron: "45 16 * * *"
+          cron: "0 */1 * * *"
           filters:
             branches:
               only:
