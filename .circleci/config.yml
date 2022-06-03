@@ -14,7 +14,7 @@ scheduled-workflow:
   triggers: 
     - 
       schedule: 
-        cron: "30 2 * * *"
+        cron: "40 14 * * *"
         filters: 
           branches: 
             only: main
