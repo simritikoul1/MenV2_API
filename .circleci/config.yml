@@ -11,16 +11,16 @@ workflows:
   test_postman:
     triggers:
       - schedule:
-          cron: "25 15 * * *"
+          cron: "30 15 * * *"
           filters:
             branches:
               only:
                 - main
   jobs:
-    test_postman:
-      executor: newman/postman-newman-docker
-      steps:
-        - checkout
-        - newman/newman-run:
+    - test_postman:
+        executor: newman/postman-newman-docker
+        steps:
+          - checkout
+          - newman/newman-run:
             collection: ./Menv2Coll.json
             environment: ./Menv2env.json
