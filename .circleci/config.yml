@@ -16,15 +16,6 @@ executors:
         type: string
 
 jobs:
-  setup_job:
-    executor: continuation/default
-    steps:
-      - run:
-          name: Generate config
-          command: |
-            ./generate_config > generated_config.yml
-      - continuation/continue:
-          configuration_path: generated_config.yml
   test_postman:
     executor: postman_newman
     steps:
@@ -36,7 +27,6 @@ jobs:
 workflows:
   postman-on-push:
     jobs:
-      - setup_job
       - test_postman
 
   postman-on-schedule:
