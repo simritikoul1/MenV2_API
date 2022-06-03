@@ -22,7 +22,7 @@ workflows:
   test_postman:
     triggers:
       - schedule:
-          cron: "00 16 * * *"
+          cron: "10 16 * * *"
           filters:
             branches:
               only:
