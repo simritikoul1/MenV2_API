@@ -1,6 +1,6 @@
 version: 2.1
 
-setup: true
+postman-workflow: true
 
 orbs:
   continuation: circleci/continuation@0.1.2
@@ -39,14 +39,10 @@ workflows:
   postman-workflow:
     triggers:
       - schedule:
-          cron: "27 18 * * *"
+          cron: "33 18 * * *"
           filters:
             branches:
               only:
                 - main
     jobs:
       - test_postman
-
-  setup:
-    jobs:
-      - setup_job
