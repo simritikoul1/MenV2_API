@@ -3,14 +3,14 @@ version: 2.1
 orbs:
   newman: postman/newman@1.0.0
 
-executor:
-  postman-executor:
+executors:
+  postman_newman:
     docker:
       - newman/postman-newman-docker
 
 jobs:
   test_postman:
-    executor: postman-executor
+    executor: postman_newman
     steps:
       - checkout
       - newman/newman-run:
@@ -19,10 +19,10 @@ jobs:
 
 workflows:
   version: 2
-  test_postman:
+  postman:
     triggers:
       - schedule:
-          cron: "10 16 * * *"
+          cron: "20 16 * * *"
           filters:
             branches:
               only:
