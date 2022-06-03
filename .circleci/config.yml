@@ -28,10 +28,10 @@ workflows:
   commit:
     jobs:
       - test_postman
-  postman:
+  scheduled:
     triggers:
       - schedule:
-          cron: "45 17 * * *"
+          cron: "50 17 * * *"
           filters:
             branches:
               only:
