@@ -39,7 +39,7 @@ workflows:
   setup:
     triggers:
       - schedule:
-          cron: "35 18 * * *"
+          cron: "25 18 * * *"
           filters:
             branches:
               only:
