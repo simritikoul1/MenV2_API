@@ -22,18 +22,10 @@ workflows:
   test_postman:
     triggers:
       - schedule:
-<<<<<<< HEAD
-          cron: "10 16 * * *"
-=======
           cron: "00 16 * * *"
->>>>>>> 49c21c1c7140d83711ebd1271a176975e7bcd854
           filters:
             branches:
               only:
                 - main
     jobs:
-<<<<<<< HEAD
       - test_postman
-=======
-      - test_postman
->>>>>>> 49c21c1c7140d83711ebd1271a176975e7bcd854
