@@ -39,7 +39,7 @@ workflows:
   postman-workflow:
     triggers:
       - schedule:
-          cron: "25 18 * * *"
+          cron: "27 18 * * *"
           filters:
             branches:
               only:
@@ -50,12 +50,3 @@ workflows:
   setup:
     jobs:
       - setup_job
-
-
-
-
-
-
-
-
-
