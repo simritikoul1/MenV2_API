@@ -17,10 +17,13 @@ workflows:
               only:
                 - main
   jobs:
-    - test_postman:
-        executor: newman/postman-newman-docker
-        steps:
-          - checkout
-          - newman/newman-run:
-            collection: ./Menv2Coll.json
-            environment: ./Menv2env.json
+    - test_postman
+
+jobs:
+  test_postman:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./Menv2Coll.json
+          environment: ./Menv2env.json
