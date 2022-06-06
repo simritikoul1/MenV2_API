@@ -32,7 +32,7 @@ workflows:
   postman-on-schedule:
     triggers:
       - schedule:
-          cron: "45 11 * * *"
+          cron: "30 06 * * *"
           filters:
             branches:
               only:
